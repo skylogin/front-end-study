@@ -30,7 +30,26 @@
       this.reset();
       this.elements[0].focus();
     });
-  }
+  };
+
+  FormHandler.prototype.addStrengthHandler = function(){
+    this.$formElement.on('change', function(event){
+      var target = $('#strengthValue');
+      target.html(this.value);
+
+      if(this.value < 35){
+        target.css('color', '#0f0');
+      } else if(this.value < 60){
+        target.css('color', '#ff0');
+      } else{
+        target.css('color', '#f00');
+      }
+
+
+    })
+  };
+
+
 
   App.FormHandler = FormHandler;
   window.App = App;

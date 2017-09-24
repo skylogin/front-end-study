@@ -40,6 +40,12 @@
                 grande
               </label>
             </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="size" value="coffee-zilla">
+                coffee-zilla
+              </label>
+            </div>
             <div class="form-group">
               <label for="flavorShot">Flavor Shot</label>
               <select class="form-control" id="flavorShot" name="flavor">
@@ -51,7 +57,8 @@
             </div>
             <div class="form-group">
               <label for="strengthLevel">Coffeine Rating</label>
-              <input type="range" id="strengthLevel" name="strength" value="30">
+              <input type="range" id="strengthLevel" name="strength" value="30" data-coffee-order="strength">
+              <span id="strengthValue">30</span>
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
             <button type="reset" class="btn btn-default">Reset</button>
