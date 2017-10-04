@@ -23,12 +23,13 @@
       var data = {};
       $(this).serializeArray().forEach(function(item){
         data[item.name] = item.value;
-        console.log(item.name + ' is ' + item.value);
+        // console.log(item.name + ' is ' + item.value);
       });
-      console.log(data);
+      // console.log(data);
       fn(data);
       this.reset();
       this.elements[0].focus();
+      $('#strengthValue').html('30').css('color', '#000');
     });
   };
 
