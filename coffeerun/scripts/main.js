@@ -8,6 +8,7 @@
   var DataStore = App.DataStore;
   var FormHandler = App.FormHandler;
   var CheckList = App.CheckList;
+  var Validation = App.Validation;
 
   var myTruck = new Truck('ncc-1701', new DataStore());
   window.myTruck = myTruck;
@@ -21,6 +22,10 @@
     myTruck.createOrder.call(myTruck, data);
     checkList.addRow.call(checkList, data);
   });
+
+  //폼 검증함수 수행
+  formHandler.addInputHandler(Validation.isCompanyEmail);
+  formHandler.addDecaffeineHandler(Validation.isDecaffeine, Validation.isUpper20);
 
   //범위에 대한 핸들러
   var strengthHandler = new FormHandler(STRENGTH_SELECTOR);

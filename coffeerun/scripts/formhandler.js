@@ -23,9 +23,7 @@
       var data = {};
       $(this).serializeArray().forEach(function(item){
         data[item.name] = item.value;
-        // console.log(item.name + ' is ' + item.value);
       });
-      // console.log(data);
       fn(data);
       this.reset();
       this.elements[0].focus();
@@ -33,7 +31,48 @@
     });
   };
 
-  FormHandler.prototype.addStrengthHandler = function(){
+  FormHandler.prototype.addInputHandler = function(fn){
+    console.log('Setting input handler for form');
+    this.$formElement.on('input', '[name="emailAddress"]', function(event){
+      var emailAddress = event.target.value;
+      var message = '';
+      if(fn(emailAddress)){
+        event.target.setCustomValidity('');
+      } else{
+        message = emailAddress + ' is not an authorized email address!';
+        event.target.setCustomValidity(message);
+      }
+    });
+  };
+
+  FormHandler.prototype.addDecaffeineHandler = function(fn, fn2){
+    this.$formElement.on('input', '[name="coffee"]', function(event){
+      var order = event.target.value;
+      var message = '';
+
+      if(fn(order)){
+        event.target.setCustomValidity('');
+      } else{
+        message = 'Are you sure order to decaffein?';
+        event.target.setCustomValidity(message);
+      }
+    });
+
+    this.$formElement.on('input', '[name="strength"]', function(event){
+      var strength = event.target.value;
+      var message = '';
+      console.log(strength, fn2(strength));
+
+      if(fn2(strength)){
+        event.target.setCustomValidity('');
+      } else{
+        message = 'Are you sure order to decaffein?';
+        event.target.setCustomValidity(message);
+      }
+    });
+  };
+
+  FormHandler.prototype.addStrengthHandler = function(fn){
     this.$formElement.on('change', function(event){
       var target = $('#strengthValue');
       target.html(this.value);
@@ -45,9 +84,7 @@
       } else{
         target.css('color', '#f00');
       }
-
-
-    })
+    });
   };
 
 
