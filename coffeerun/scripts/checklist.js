@@ -47,8 +47,10 @@
         } else if(CLICKCOUNTER === 1){
           //기존 one클릭 처리
           var email = event.target.value;
-          self.removeRow(email);
-          fn(email);
+          fn(email)
+            .then(function(){
+              self.removeRow(email);
+            }.bind(this));
         }
         CLICKCOUNTER = 0;
       },350);

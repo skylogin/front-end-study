@@ -28,10 +28,12 @@
       var self = this;
       remoteValidation.get(data.emailAddress, function(response){
         if(response === null){
-          fn(data);
-          self.reset();
-          self.elements[0].focus();
-          $('#strengthValue').html('30').css('color', '#000');
+          fn(data)
+            .then(function(){
+              self.reset();
+              self.elements[0].focus();
+              $('#strengthValue').html('30').css('color', '#000');
+            }.bind(this));
         } else{
           alert('already orderd');
         }

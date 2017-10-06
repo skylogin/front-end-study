@@ -22,13 +22,20 @@
   checkList.addClickHandler(myTruck.deliverOrder.bind(myTruck));
   var formHandler = new FormHandler(FORM_SELECTOR);
   formHandler.addSubmitHandler(remoteDS, function(data){
-    myTruck.createOrder.call(myTruck, data);
-    checkList.addRow.call(checkList, data);
+    return myTruck.createOrder.call(myTruck, data)
+      .then(function(){
+        checkList.addRow.call(checkList, data);
+      }, function(){
+        alert('Server unreachable. Try again later.');
+      });
   });
 
   //폼 검증함수 수행
   formHandler.addInputHandler(Validation.isCompanyEmail);
   formHandler.addDecaffeineHandler(Validation.isDecaffeine, Validation.isUpper20);
+
+  //서버의 전체값을 가져와 출력해줌. printOrders에 파라미터로 checkList출력 함수를 넣어줌
+  myTruck.printOrders(checkList.addRow.bind(checkList));
 
   //범위에 대한 핸들러
   var strengthHandler = new FormHandler(STRENGTH_SELECTOR);
