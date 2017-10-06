@@ -15,7 +15,7 @@
   }
 
 
-  FormHandler.prototype.addSubmitHandler = function(fn){
+  FormHandler.prototype.addSubmitHandler = function(remoteValidation, fn){
     console.log('Setting submit handler for form');
     this.$formElement.on('submit', function(event){
       event.preventDefault();
@@ -24,10 +24,18 @@
       $(this).serializeArray().forEach(function(item){
         data[item.name] = item.value;
       });
-      fn(data);
-      this.reset();
-      this.elements[0].focus();
-      $('#strengthValue').html('30').css('color', '#000');
+
+      var self = this;
+      remoteValidation.get(data.emailAddress, function(response){
+        if(response === null){
+          fn(data);
+          self.reset();
+          self.elements[0].focus();
+          $('#strengthValue').html('30').css('color', '#000');
+        } else{
+          alert('already orderd');
+        }
+      });
     });
   };
 
@@ -85,8 +93,6 @@
       }
     });
   };
-
-
 
   App.FormHandler = FormHandler;
   window.App = App;
