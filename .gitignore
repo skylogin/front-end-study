@@ -58,3 +58,5 @@ typings/
 .env
 
 fonts/
+
+.DS_Store
