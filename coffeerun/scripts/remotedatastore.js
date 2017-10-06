@@ -13,6 +13,8 @@
   RemoteDataStore.prototype.add = function(key, val){
     return $.post(this.serverUrl, val, function(serverResponse){
       console.log(serverResponse);
+    }, function(){
+      alert('aaa');
     });
   };
   RemoteDataStore.prototype.getAll = function(cb){
