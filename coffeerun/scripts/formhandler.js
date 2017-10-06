@@ -61,7 +61,6 @@
     this.$formElement.on('input', '[name="strength"]', function(event){
       var strength = event.target.value;
       var message = '';
-      console.log(strength, fn2(strength));
 
       if(fn2(strength)){
         event.target.setCustomValidity('');
