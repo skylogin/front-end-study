@@ -4,6 +4,7 @@ var fs = require('fs');
 var extract = require('./extract');
 var handle404Error = require('./handle404Error');
 var getMimeType = require('./mime');
+var wss = require('./websockets-server');
 
 
 var server = http.createServer(function(req, res){
@@ -11,7 +12,7 @@ var server = http.createServer(function(req, res){
 
   var filePath = extract(req.url);
   fs.readFile(filePath, function(err, data){
-    if(err
+    if(err){
       handle404Error(err, res);
       return;
     } else{
