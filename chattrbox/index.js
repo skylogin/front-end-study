@@ -5,6 +5,7 @@ var extract = require('./extract');
 var handle404Error = require('./handle404Error');
 var getMimeType = require('./mime');
 var wss = require('./websockets-server');
+var chatbot = require('./websockets-chatbot');
 
 
 var server = http.createServer(function(req, res){

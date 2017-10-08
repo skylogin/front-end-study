@@ -17,9 +17,10 @@ ws.on('connection', function(socket){
   var user = {};
   user.id = ++id;
   user.auth = false;
+  user.greeting = false;
   users.push(user);
   socket.userId = id;
-  socket.send('enter your password: ');
+  // socket.send('enter your password: ');
 
   socket.on('message', function(data){
     console.log('message received: ' + data);
@@ -31,14 +32,28 @@ ws.on('connection', function(socket){
       });
     } else{
       if(!users[socket.userId-1].auth){
-        socket.send('wrong password');
+        // socket.send('wrong password');
       }
     }
 
     ws.clients.forEach(function(clientSocket){
       if(socket.userId === users[socket.userId-1].id && users[socket.userId-1].auth){
-        clientSocket.send(data);
-        messages.push(data);
+        // console.log(data);
+        // data = JSON.parse(data);
+        var message = {};
+        message.id = socket.userId;
+        message.msg = data;
+
+        if(!users[socket.userId-1].greeting){
+          //원래는 챗봇에서 이걸 보내주어야 하는데....
+          var botMessage = {};
+          botMessage.id = 0;
+          botMessage.msg = "Hello";
+          clientSocket.send(JSON.stringify(botMessage));
+          users[socket.userId-1].greeting = true;
+        }
+        clientSocket.send(JSON.stringify(message));
+        messages.push(JSON.stringify(message));
       }
     });
   });
