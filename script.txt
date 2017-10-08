@@ -1,2 +1,5 @@
 #start server
 browser-sync start --server --browser "Chrome" --files "stylesheets/*.css, *.html, scripts/*.js"
+
+#wscat
+wscat -c ws://localhost:3001
