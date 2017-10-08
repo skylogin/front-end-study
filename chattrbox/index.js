@@ -1,9 +1,9 @@
 var http = require('http');
 var fs = require('fs');
 
-var mime = require('mime');
 var extract = require('./extract');
 var handle404Error = require('./handle404Error');
+var getMimeType = require('./mime');
 
 
 var server = http.createServer(function(req, res){
@@ -11,13 +11,12 @@ var server = http.createServer(function(req, res){
 
   var filePath = extract(req.url);
   fs.readFile(filePath, function(err, data){
-    var mimeType = mime.getType(filePath);
-    res.setHeader('Content-Type', mimeType);
-
-    if(err){
+    if(err
       handle404Error(err, res);
       return;
     } else{
+      var mimeType = getMimeType(filePath);
+      res.setHeader('Content-Type', mimeType);
       res.end(data);
     }
   });
