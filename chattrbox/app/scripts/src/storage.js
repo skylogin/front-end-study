@@ -21,7 +21,7 @@ export class UserStore extends Store{
 
 export class MessageStore extends Store{
   constructor(key){
-    super(sessionStorage);
+    super(localStorage);
     this.key = key;
     this.flag = true;
   }
@@ -35,6 +35,6 @@ export class MessageStore extends Store{
   }
 
   clear(){
-    sessionStorage.removeItem("x-chattrbox/m");
+    localStorage.removeItem("x-chattrbox/m");
   }
 }
