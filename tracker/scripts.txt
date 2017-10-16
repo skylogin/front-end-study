@@ -1,0 +1,17 @@
+#route
+ember g route index
+ember g route sightings
+ember g route sightings/index
+ember g route sightings/new
+ember g route sighting
+ember g route sighting/index
+ember g route sighting/edit
+ember g route cryptids
+ember g route cryptid
+ember g route witnesses
+ember g route witness
+
+#model
+ember g model cryptids
+ember g model sighting
+ember g model witness
