@@ -15,3 +15,12 @@ ember g route witness
 ember g model cryptids
 ember g model sighting
 ember g model witness
+
+#adapter
+ember g adapter application
+
+#serializer -not installed
+ember g serializer [application or model]
+
+#Mirage
+ember install ember-cli-mirage
