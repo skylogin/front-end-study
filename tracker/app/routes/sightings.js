@@ -16,7 +16,7 @@ export default Ember.Route.extend({
     });
 
     let record3 = this.store.createRecord('sighting', {
-      location: 'Asilomar',
+      location: '',
       sightedAt: new Date('2016-03-21')
     });
 
