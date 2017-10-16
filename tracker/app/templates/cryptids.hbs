@@ -2,7 +2,7 @@
   {{#each model as |cryptid|}}
     <div class="col-xs-12 col-sm-3 text-center">
       <div class="media well">
-        {{#link-to 'cryptid' crpytid.id}}
+        {{#link-to 'cryptid' cryptid.id}}
           <img class="media-object thumbnail" alt="{{cryptid.name}}"
             src="{{if cryptid.profileImg cryptid.profileImg 'assets/images/cryptids/blank_th.png'}}"
             width="100%" height="100%" />

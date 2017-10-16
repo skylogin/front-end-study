@@ -27,3 +27,7 @@ ember install ember-cli-mirage
 
 #helper
 ember g helper moment-from
+
+#controller
+ember g controller sightings/new
+ember g controller sighting/edit
