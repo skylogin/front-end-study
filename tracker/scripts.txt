@@ -24,3 +24,6 @@ ember g serializer [application or model]
 
 #Mirage
 ember install ember-cli-mirage
+
+#helper
+ember g helper moment-from
