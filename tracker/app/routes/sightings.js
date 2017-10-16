@@ -11,7 +11,8 @@ export default Ember.Route.extend({
 
     let record2 = this.store.createRecord('sighting', {
       location: 'Calloway',
-      sightedAt: new Date('2016-03-14')
+      sightedAt: new Date('2016-03-14'),
+      isNew: true
     });
 
     let record3 = this.store.createRecord('sighting', {
